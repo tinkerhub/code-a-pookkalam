@@ -7,26 +7,30 @@
     <title>Code A Pookkalam</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="index.css">
 
     <script src="index.js" defer></script>
 
 </head>
 <body class="no-x-scroll">
         <div class="row no-x-scroll">
-            <div class="four col-md-4 col-sm-12 fill">
-                <div class="counter-box colored"> <i class="fa fa-thumbs-o-up"></i> <span id="registered" class="counter">0</span>
+            <div class="four col-md-3 col-sm-6 fill">
+                <div class="counter-box colored"> <i class="fa fa-thumbs-up"></i> <span id="submitted" class="counter">0</span>
+                    <p>Submitted</p>
+                </div>
+            </div>
+            <div class="four col-md-3 col-sm-6 fill">
+                <div class="counter-box"> <i class="fa fa-award"></i> <span id="registered" class="counter">0</span>
                     <p>Registered</p>
                 </div>
             </div>
-            <div class="four col-md-4 col-sm-12 fill">
+            <div class="four col-md-3 col-sm-6 fill">
                 <div class="counter-box"> <i class="fa fa-user"></i> <span id="pending" class="counter">0</span>
                     <p>Registration Pending</p>
                 </div>
             </div>
-            <div class="four col-md-4 col-sm-12 fill">
-                <div class="counter-box"> <i class="fa fa-group"></i> <span id="gender"  class="counter">0</span>
+            <div class="four col-md-3 col-sm-6 fill">
+                <div class="counter-box"> <i class="fa fa-venus-mars"></i> <span id="gender"  class="counter">0</span>
                     <p>Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</p>
                 </div>
             </div>
@@ -37,7 +41,8 @@
                 <tr>
                     <th scope="col">Rank</th>
                     <th scope="col">College</th>
-                    <th scope="col">Registrations</th>
+                    <th scope="col">Registered</th>
+                    <th scope="col">Submitted</th>
                 </tr>
             </thead>
             <tbody id="tableBodyCollege">
@@ -48,7 +53,7 @@
             <thead>
                 <tr>
                     <th scope="col">District</th>
-                    <th scope="col">Registrations</th>
+                    <th scope="col">Registered</th>
                 </tr>
             </thead>
             <tbody id="tableBodyDistrict">
