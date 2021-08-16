@@ -1,6 +1,7 @@
 .table-container{
     padding: 0 1rem;
-    background-color:wheat
+    background-color:wheat;
+    overflow-x: auto;
 }
 
 .fill {
