@@ -72,7 +72,7 @@ async function getTotalData()
     submitted.innerHTML = data.submissions;
     registered.innerText = data.done;
     pending.innerText = data.pending;
-    gender.innerText = `${Number(100 * data.male / data.total).toFixed(0)}% / ${Number(data.female * 100 / data.total).toFixed(0)}%`;
+    gender.innerText = `${Number(100 * data.male / data.total).toFixed(0)}% / ${Number(data.female * 100 / data.total).toFixed(0)}% / ${Number(data.non_binary * 100 / data.total).toFixed(0)}%`;
 
     getDistrictData(data.districts);
 }
