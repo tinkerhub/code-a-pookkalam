@@ -89,17 +89,8 @@ async function showCollege(campus)
 
     modal.show();
 
-    for (const email of data.usersMails)
-    {
-        const urlM = `https://mon.school/api/method/mon_school.api.get_contest_entry_of_user?contest=code-a-pookkalam&email=${email}`;
-        const submission = await fetch(urlM)
-            .then(res => res.json());
-
-        const name = submission?.message?.entry?.author?.full_name;
-        if (!name) return;
-
+    for (const name of data.usersNames)
         tableBodyUsers.innerHTML += generateUserRow(++i, name);
-    }
 }
 
 getTotalData();
