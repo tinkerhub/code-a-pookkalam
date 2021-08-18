@@ -35,12 +35,12 @@ function generateDistrictRow(rank, district, registrations)
     );
 }
 
-function generateUserRow(SlNo, name)
+function generateUserRow(SlNo, name, image_s, image_l)
 {
     return (
         `<tr>
             <td>${SlNo ?? -1}</td>
-            <td>${name || "Unknown"}</td>
+            <td><a href="${image_l}"><img src="${image_s}" width="24px"></img></a>${name || "Unknown"}</td>
         </tr>`
     );
 }
@@ -103,8 +103,8 @@ async function showCollege(campus)
 
     let i = 0;
 
-    for (const name of data.usersNames)
-        tableBodyUsers.innerHTML += generateUserRow(++i, name);
+    for (const user of data.users)
+        tableBodyUsers.innerHTML += generateUserRow(++i, user.name,user.small,user.medium);
 
     cachedCampuses[campus] = tableBodyUsers.innerHTML;
 }
