@@ -111,7 +111,6 @@ async function showCollege(campus)
 
 window.addEventListener('hashchange', (event) =>
 {
-    console.log(event);
     if (location.href.split("#").length > 1)
         showCollege(location.href.split("#")[1]);
     else
