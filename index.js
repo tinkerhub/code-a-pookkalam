@@ -10,6 +10,8 @@ const gender = document.getElementById("gender");
 
 const modal = new bootstrap.Modal(document.getElementById("exampleModalLong"), {});
 
+const cachedCampuses = {};
+
 function generateCollegeRow(rank, college, registrations, submissions)
 {
     return (
@@ -22,10 +24,11 @@ function generateCollegeRow(rank, college, registrations, submissions)
     );
 }
 
-function generateDistrictRow(district, registrations)
+function generateDistrictRow(rank, district, registrations)
 {
     return (
         `<tr>
+            <th scope="row">${rank ?? -1}</th>
             <td>${district || "Unknown"}</td>
             <td>${registrations ?? 0}</td>
         </tr>`
@@ -59,8 +62,12 @@ async function getCampusData()
 
 async function getDistrictData(data) 
 {
+    let i = 1;
+
     tableBodyDistrict.innerHTML = "";
-    Object.keys(data).forEach((key) => tableBodyDistrict.innerHTML += generateDistrictRow(key, data[key]));
+    Object.keys(data)
+        .sort((a, b) => data[a] < data[b] ? 1 : -1)
+        .forEach((key) => tableBodyDistrict.innerHTML += generateDistrictRow(i++, key, data[key]));
 }
 
 async function getTotalData()
@@ -81,16 +88,21 @@ async function showCollege(campus)
 {
     if (!campus) return;
 
+    tableBodyUsers.innerHTML = "";
+    modal.show();
+
+    if (cachedCampuses[campus])
+        return tableBodyUsers.innerHTML = cachedCampuses[campus];
+
     const url = `https://us-central1-tinkerhub-api.cloudfunctions.net/getSubmissionsFromCampus/?campus=${campus}`;
     const data = await fetch(url).then(res => res.json());
 
-    tableBodyUsers.innerHTML = "";
     let i = 0;
-
-    modal.show();
 
     for (const name of data.usersNames)
         tableBodyUsers.innerHTML += generateUserRow(++i, name);
+
+    cachedCampuses[campus] = tableBodyUsers.innerHTML;
 }
 
 getTotalData();
