@@ -56,7 +56,9 @@ async function getCampusData()
     let rank = 1;
 
     tableBodyCollege.innerHTML = "";
-    data.colleges.forEach(({ college, count, submissions }) =>
+    data.colleges
+        .sort((a, b) => (a.submissions ?? -1) < (b.submissions ?? -1) ? 1 : -1)
+        .forEach(({ college, count, submissions }) =>
         tableBodyCollege.innerHTML += generateCollegeRow(rank++, college, count, submissions));
 }
 
