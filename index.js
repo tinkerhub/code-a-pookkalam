@@ -90,6 +90,8 @@ async function showCollege(campus)
 {
     if (!campus) return;
 
+    window.location.href = `#${campus}`;
+
     tableBodyUsers.innerHTML = "";
     modal.show();
 
@@ -107,6 +109,18 @@ async function showCollege(campus)
     cachedCampuses[campus] = tableBodyUsers.innerHTML;
 }
 
+window.addEventListener('hashchange', (event) =>
+{
+    console.log(event);
+    if (location.href.split("#").length > 1)
+        showCollege(location.href.split("#")[1]);
+    else
+        modal.hide();
+});
+
 getTotalData();
 getCampusData();
+
+if (location.href.split("#").length > 1)
+    showCollege(location.href.split("#")[1]);
 
