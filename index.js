@@ -103,6 +103,7 @@ async function showCollege(campus)
 
     let i = 0;
 
+    tableBodyUsers.innerHTML = "";
     for (const user of data.users)
         tableBodyUsers.innerHTML += generateUserRow(++i, user.name,user.small,user.medium);
 
