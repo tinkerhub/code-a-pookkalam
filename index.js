@@ -12,13 +12,12 @@ const modal = new bootstrap.Modal(document.getElementById("exampleModalLong"), {
 
 const cachedCampuses = {};
 
-function generateCollegeRow(rank, college, registrations, submissions)
+function generateCollegeRow(rank, college, submissions)
 {
     return (
         `<tr>
             <th scope="row">${rank ?? -1}</th>
             <td onClick="showCollege(this.innerText)">${college || "Unknown"}</td>
-            <td>${registrations ?? 0}</td>
             <td>${submissions ?? 0}</td>
         </tr>`
     );
@@ -58,8 +57,8 @@ async function getCampusData()
     tableBodyCollege.innerHTML = "";
     data.colleges
         .sort((a, b) => (a.submissions ?? -1) < (b.submissions ?? -1) ? 1 : -1)
-        .forEach(({ college, count, submissions }) =>
-        tableBodyCollege.innerHTML += generateCollegeRow(rank++, college, count, submissions));
+        .forEach(({ college, submissions }) =>
+        tableBodyCollege.innerHTML += generateCollegeRow(rank++, college, submissions));
 }
 
 async function getDistrictData(data) 
