@@ -78,6 +78,7 @@ async function getTotalData()
 
     const data = await fetch(url).then(res => res.json());
 
+    total.innerHTML = data.total;
     submitted.innerHTML = data.submissions;
     registered.innerText = data.done;
     pending.innerText = data.pending;
